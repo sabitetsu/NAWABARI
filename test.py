@@ -37,7 +37,7 @@ class TestApp(App):
 
     def __init__(self, **kwargs):
         super(TestApp, self).__init__(**kwargs)
-        self.title = 'greeting'    # ウィンドウの名前を変更
+        self.title = 'test'    # ウィンドウの名前を変更
 
         def build(self):
             return MyWidget()
