@@ -1,14 +1,24 @@
 MyWidget:
 
 <MyWidget>:
+
     BoxLayout:
         orientation: 'vertical'
         size: root.size
 
+        Label:
+            size_hint_y: 0.7
+            id: label1
+            font_size: 68
+            text: root.text
+            color: root.color
+            font_name: 'msgothic.ttc'
+
         Image:
             source: './Apple.png'
-    Button:
-        id: button1
-        text: "押すな"
-        font_size: 24
-        font_name: 'msgothic.ttc'
+        Button:
+            id: button1
+            text: "押すな"
+            font_size: 24
+            on_press: root.buttonClicked()
+            font_name: 'msgothic.ttc'
