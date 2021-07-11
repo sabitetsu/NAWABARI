@@ -1,2 +1,2 @@
-rootProject.name = "google_map"
+rootProject.name = "googlemapForKotlin"
 include ':app'
