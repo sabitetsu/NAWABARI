@@ -22,7 +22,8 @@ class Game(Widget):
     timingGame = False
     gauge_length = 200
     gauge = 0
-    gaugeUpper = 5
+    gaugeUpper = 8
+    stop = False
 
 
     def __init__(self, **kwargs):
@@ -36,6 +37,8 @@ class Game(Widget):
             self.text = str(self.startCount)
         elif self.countPhase:
             self.count += 1
+        elif self.timingGame:
+            self.stop = True
 
     def move(self):
         self.gauge += self.gaugeUpper
@@ -52,7 +55,6 @@ class Game(Widget):
             self.startCount -= 1
             self.text = str(self.startCount)
         elif self.startCount <= 0 and self.count == 0 and not(self.countPhase) and not(self.timingGame):
-            self.text = "Start!!!"
             self.countPhase = True
             self.s = time.time()
         elif self.countPhase:
@@ -65,8 +67,11 @@ class Game(Widget):
                 self.countPhaseT -= 1
                 self.s = time.time()
         elif self.timingGame:
-            self.move()
-            self.text = str(self.gauge)
+            if self.stop:
+                self.text = str(self.gauge * self.count)
+            else:
+                self.move()
+                self.text = "■" * (1+(self.gauge//20))
 
 
 
